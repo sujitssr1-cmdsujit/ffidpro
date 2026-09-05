@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="theme-color" content="#6a21ff">
-<title>GET FF ID • GET FF PRO LEVEL ID</title>
+<title>FF PRO LEVEL ID</title>
 <style>
 :root{--bg1:#090711;--bg2:#1a1030;--card:#171225;--card2:#21173a;--text:#fff;--muted:#c8c1d8;--purple:#8a43ff;--pink:#ff4fd8;--cyan:#35e4ff;--green:#20d96b;--yellow:#ffd43b;--line:rgba(255,255,255,.1);--shadow:0 18px 50px rgba(0,0,0,.38);--max:780px}
 *{box-sizing:border-box}
@@ -37,16 +37,30 @@ h1{letter-spacing:.3px!important}
 .item b{display:block;margin-bottom:7px;font-size:15px}.item b:before{content:"●";color:#20d96b;margin-right:7px;font-size:10px}.meta{display:flex;gap:7px;flex-wrap:wrap;font-size:13px;font-weight:900}.pill{padding:5px 8px;border-radius:999px;background:rgba(255,255,255,.1)}
 .green{background:linear-gradient(135deg,#123b28,#164a31)}.green .status{background:#1f9d55;color:#eafff1}.blue{background:linear-gradient(135deg,#142d54,#143a67)}.blue .status{background:#1b6ca8;color:#eaf7ff}.purple{background:linear-gradient(135deg,#2e1c52,#3a235f)}.purple .status{background:#7e45d8;color:#f6ecff}.orange{background:linear-gradient(135deg,#4c2a10,#5b3414)}.orange .status{background:#d57b22;color:#fff2df}.status{padding:6px 10px;border-radius:999px}
 .note{margin-top:18px;text-align:center;color:#a9a1bb;font-size:12px;line-height:1.5}
+
+.watch-title{
+  font-size:clamp(22px,6vw,34px)!important;
+  font-weight:1000!important;
+  letter-spacing:1.2px!important;
+  color:#ffffff!important;
+  background:linear-gradient(135deg,#8a43ff,#ff4fd8,#35e4ff)!important;
+  border:1px solid rgba(255,255,255,.16)!important;
+  padding:10px 18px!important;
+  border-radius:16px!important;
+  box-shadow:0 10px 28px rgba(138,67,255,.30),0 0 26px rgba(255,79,216,.18)!important;
+  text-shadow:0 2px 10px rgba(0,0,0,.35);
+}
+
 </style>
 </head>
 <body>
 <main class="page">
-<div class="top"><div class="topline"><div class="brand">⚡ GET FF ID • GET FF PRO LEVEL ID</div>
+<div class="top"><div class="topline"><div class="brand">⚡ FF PRO LEVEL ID</div>
 <div style="text-align:right">
   <div class="clock" id="clock">Loading IST time…</div>
   <div class="date" id="date">Loading date…</div>
 </div></div></div>
-<div class="eyebrow" style="font-size:14px;font-weight:950;letter-spacing:1px">WATCH FULL VIDEO</div>
+<div class="eyebrow watch-title">WATCH FULL VIDEO</div>
 
 
 <div class="video-shell">
@@ -62,7 +76,7 @@ h1{letter-spacing:.3px!important}
   <div class="badge">PRO LEVEL ACCESS</div>
   <div class="logo-title">
   <img id="siteLogo" src="./Logo.png?v=5" alt="FF ID logo">
-  <div class="title title-text"><span style="color:#3bff79">GET FF ID</span> • GET FF PRO LEVEL ID</div>
+  <div class="title title-text" style="font-size:clamp(24px,6vw,38px);font-weight:950;">FF PRO LEVEL ID</div>
 </div>
   <div class="sub">Fast access • clear steps • mobile-friendly layout</div>
   <div class="chips">
@@ -225,10 +239,13 @@ setInterval(renderFive, 2000);
   const video = document.getElementById("mainVideo");
   if(!video) return;
 
+  video.autoplay = true;
+  video.playsInline = true;
+  video.loop = true;
   video.volume = 1;
 
-  async function startBestPossible(){
-    // First: try immediate autoplay WITH sound.
+  async function startVideo(){
+    // First attempt: autoplay WITH sound
     try{
       video.muted = false;
       video.defaultMuted = false;
@@ -236,8 +253,8 @@ setInterval(renderFive, 2000);
       return;
     }catch(e){}
 
-    // Browser blocked sound-on autoplay.
-    // Keep autoplay working by falling back to muted playback.
+    // Browser policy blocked sound-on autoplay.
+    // Keep the video itself autoplaying.
     try{
       video.muted = true;
       video.defaultMuted = true;
@@ -245,7 +262,7 @@ setInterval(renderFive, 2000);
     }catch(e){}
   }
 
-  async function enableSound(){
+  async function unmuteAndPlay(){
     try{
       video.muted = false;
       video.defaultMuted = false;
@@ -254,14 +271,12 @@ setInterval(renderFive, 2000);
     }catch(e){}
   }
 
-  document.addEventListener("DOMContentLoaded", startBestPossible, {once:true});
-  window.addEventListener("load", startBestPossible, {once:true});
-  video.addEventListener("canplay", startBestPossible, {once:true});
+  document.addEventListener("DOMContentLoaded", startVideo, {once:true});
+  window.addEventListener("load", startVideo, {once:true});
+  video.addEventListener("canplay", startVideo, {once:true});
 
-  // The moment the browser receives any normal user interaction,
-  // switch sound on automatically.
   ["pointerdown","touchstart","click","keydown"].forEach(evt=>{
-    document.addEventListener(evt, enableSound, {once:true, passive:true});
+    document.addEventListener(evt, unmuteAndPlay, {once:true, passive:true});
   });
 })();
 </script>
