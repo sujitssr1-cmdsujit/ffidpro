@@ -47,10 +47,10 @@ h1{letter-spacing:.3px!important}
   <div class="date" id="date">Loading date…</div>
 </div></div></div>
 <div class="eyebrow">FF ID ACCESS PAGE</div>
-<h1>GET FF ID • GET FF PRO LEVEL ID</h1>
+
 
 <div class="video-shell">
-  <video id="mainVideo" src="Promo.mp4" autoplay loop playsinline preload="auto" controls></video>
+  <video id="mainVideo" src="./Promo.mp4?v=5" autoplay loop playsinline preload="auto" controls></video>
 </div>
 
 <a class="hero-btn" href="#" id="getBtn">GET FF ID</a>
@@ -58,7 +58,7 @@ h1{letter-spacing:.3px!important}
 <section class="card">
   <div class="badge">PRO LEVEL ACCESS</div>
   <div class="logo-title">
-  <img src="Logo.png" alt="FF ID logo">
+  <img id="siteLogo" src="./Logo.png?v=5" alt="FF ID logo">
   <div class="title title-text"><span style="color:#3bff79">GET FF ID</span> • GET FF PRO LEVEL ID</div>
 </div>
   <div class="sub">Fast access • clear steps • mobile-friendly layout</div>
@@ -201,5 +201,20 @@ document.getElementById("getBtn").addEventListener("click",(e)=>{
   alert("Add your legitimate GET FF ID destination URL here.");
 });
 </script>
+
+<script>
+(function(){
+  const logo = document.getElementById("siteLogo");
+  if (logo) {
+    logo.addEventListener("error", function(){
+      if (!logo.dataset.fallback) {
+        logo.dataset.fallback = "1";
+        logo.src = "./logo.png?v=5";
+      }
+    });
+  }
+})();
+</script>
+
 </body>
 </html>
