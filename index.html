@@ -50,7 +50,7 @@ h1{letter-spacing:.3px!important}
 
 
 <div class="video-shell">
-  <video id="mainVideo" src="./Promo.mp4?v=5" autoplay loop playsinline preload="auto" controls></video>
+  <video id="mainVideo" src="./Promo.mp4?v=5" autoplay loop playsinline preload="auto" controls autoplay playsinline loop preload="auto" controls></video>
 </div>
 
 <a class="hero-btn" href="https://1024terabox.com/s/1OSy4OdgqqwAnsmtOkE0SYQ" id="getBtn" target="_blank" rel="noopener noreferrer">GET FF ID</a>
@@ -210,6 +210,45 @@ setInterval(renderFive, 2000);
       }
     });
   }
+})();
+</script>
+
+
+<script>
+(function(){
+  const video = document.getElementById("mainVideo");
+  if(!video) return;
+
+  video.muted = false;
+  video.defaultMuted = false;
+  video.volume = 1;
+
+  async function playWithSound(){
+    try{
+      video.muted = false;
+      video.defaultMuted = false;
+      video.volume = 1;
+      await video.play();
+    }catch(e){
+      // Browser policy can block sound-on autoplay until a user gesture.
+      // Do not force a muted fallback.
+    }
+  }
+
+  document.addEventListener("DOMContentLoaded", playWithSound, {once:true});
+  window.addEventListener("load", playWithSound, {once:true});
+  video.addEventListener("canplay", playWithSound, {once:true});
+
+  ["pointerdown","touchstart","click","keydown"].forEach(evt=>{
+    document.addEventListener(evt, async ()=>{
+      try{
+        video.muted = false;
+        video.defaultMuted = false;
+        video.volume = 1;
+        await video.play();
+      }catch(e){}
+    }, {once:true, passive:true});
+  });
 })();
 </script>
 
