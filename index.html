@@ -1,0 +1,205 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#6a21ff">
+<title>GET FF ID • GET FF PRO LEVEL ID</title>
+<style>
+:root{--bg1:#090711;--bg2:#1a1030;--card:#171225;--card2:#21173a;--text:#fff;--muted:#c8c1d8;--purple:#8a43ff;--pink:#ff4fd8;--cyan:#35e4ff;--green:#20d96b;--yellow:#ffd43b;--line:rgba(255,255,255,.1);--shadow:0 18px 50px rgba(0,0,0,.38);--max:780px}
+*{box-sizing:border-box}
+html,body{margin:0;min-height:100%;font-family:Inter,system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;color:var(--text);background:radial-gradient(circle at 15% 0%,rgba(138,67,255,.28),transparent 34%),radial-gradient(circle at 90% 15%,rgba(255,79,216,.18),transparent 30%),linear-gradient(180deg,var(--bg2),var(--bg1))}
+.page{width:min(100%,var(--max));margin:auto;padding:18px 14px 38px}
+.top{background:linear-gradient(135deg,rgba(255,255,255,.11),rgba(255,255,255,.05));border:1px solid var(--line);border-radius:18px;padding:13px 14px;box-shadow:0 8px 30px rgba(0,0,0,.22)}
+.topline{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.brand{font-weight:950;font-size:15px}.clock{color:var(--cyan);font-weight:950;font-size:16px;font-variant-numeric:tabular-nums;letter-spacing:.2px}.date{color:#fff;font-size:12px;text-align:right;font-weight:800;margin-top:3px}
+.eyebrow{width:max-content;margin:18px auto 10px;padding:7px 13px;border-radius:999px;background:linear-gradient(135deg,rgba(53,228,255,.16),rgba(138,67,255,.22));border:1px solid rgba(53,228,255,.22);color:#dffbff;font-size:12px;font-weight:900;letter-spacing:.7px}
+h1{text-align:center;margin:0 0 18px;font-size:clamp(30px,7vw,54px);line-height:1.02;font-weight:950;letter-spacing:-.8px}
+.video-shell{width:100%;aspect-ratio:16/9;border-radius:22px;overflow:hidden;background:#050506;border:1px solid rgba(255,255,255,.10);box-shadow:var(--shadow)}
+.video-shell video{width:100%;height:100%;display:block;object-fit:cover;background:#000}
+.logo-title{display:flex;align-items:center;justify-content:center;gap:12px}
+.logo-title img{width:62px;height:62px;object-fit:cover;border-radius:16px;border:1px solid rgba(255,255,255,.12);box-shadow:0 8px 24px rgba(0,0,0,.28)}
+.logo-title .title-text{font-family:"Trebuchet MS","Arial Narrow",Arial,sans-serif;font-weight:900;letter-spacing:.3px}
+.brand,.title,h1,.hero-btn{font-family:"Trebuchet MS","Arial Narrow",Arial,sans-serif}
+h1{letter-spacing:.3px!important}
+.hero-btn{position:relative;overflow:hidden;display:block;margin:14px 0 8px;text-decoration:none;text-align:center;color:#fff;background:linear-gradient(135deg,#21df6b,#11b84c);padding:21px 18px;border-radius:18px;font-size:clamp(23px,6vw,35px);font-weight:950;box-shadow:0 12px 30px rgba(32,217,107,.38)}
+.hero-btn:before{content:"";position:absolute;top:0;left:-130%;width:80%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.35),transparent);animation:shine 2.8s infinite}
+@keyframes shine{0%{left:-130%}55%,100%{left:140%}}
+.card{margin-top:20px;background:radial-gradient(circle at top right,rgba(255,79,216,.16),transparent 30%),linear-gradient(145deg,var(--card2),var(--card));border:1px solid var(--line);border-radius:24px;padding:20px 16px;box-shadow:var(--shadow)}
+.badge{width:max-content;margin:0 auto 14px;padding:8px 18px;border-radius:999px;background:linear-gradient(135deg,var(--yellow),#ffb72c);color:#201500;font-weight:950;font-size:13px}
+.title{text-align:center;font-size:clamp(28px,6.8vw,48px);font-weight:950;line-height:1.04}.sub{text-align:center;color:var(--muted);font-weight:700;margin:10px 0 14px}
+.chips{display:flex;justify-content:center;gap:8px;flex-wrap:wrap}.chip{border-radius:999px;padding:7px 10px;font-size:12px;font-weight:900;border:1px solid var(--line);background:rgba(255,255,255,.06)}
+.section-title{font-size:clamp(23px,5.5vw,34px);font-weight:950;margin:28px 0 10px}.demo-label{display:inline-block;font-size:11px;font-weight:900;color:#171717;background:#ffd43b;padding:5px 8px;border-radius:999px;margin-left:8px;vertical-align:middle}
+.feed{height:410px;overflow:hidden;position:relative}
+.feed-track{display:flex;flex-direction:column;gap:10px;transition:transform .55s ease}
+.item{min-height:74px}
+.item{border-radius:18px;padding:13px 14px;border:1px solid rgba(255,255,255,.08);box-shadow:0 8px 20px rgba(0,0,0,.16);position:relative}
+.item b{display:block;margin-bottom:7px;font-size:15px}.item b:before{content:"●";color:#20d96b;margin-right:7px;font-size:10px}.meta{display:flex;gap:7px;flex-wrap:wrap;font-size:13px;font-weight:900}.pill{padding:5px 8px;border-radius:999px;background:rgba(255,255,255,.1)}
+.green{background:linear-gradient(135deg,#123b28,#164a31)}.green .status{background:#1f9d55;color:#eafff1}.blue{background:linear-gradient(135deg,#142d54,#143a67)}.blue .status{background:#1b6ca8;color:#eaf7ff}.purple{background:linear-gradient(135deg,#2e1c52,#3a235f)}.purple .status{background:#7e45d8;color:#f6ecff}.orange{background:linear-gradient(135deg,#4c2a10,#5b3414)}.orange .status{background:#d57b22;color:#fff2df}.status{padding:6px 10px;border-radius:999px}
+.note{margin-top:18px;text-align:center;color:#a9a1bb;font-size:12px;line-height:1.5}
+</style>
+</head>
+<body>
+<main class="page">
+<div class="top"><div class="topline"><div class="brand">⚡ GET FF ID • GET FF PRO LEVEL ID</div>
+<div style="text-align:right">
+  <div class="clock" id="clock">Loading IST time…</div>
+  <div class="date" id="date">Loading date…</div>
+</div></div></div>
+<div class="eyebrow">FF ID ACCESS PAGE</div>
+<h1>GET FF ID • GET FF PRO LEVEL ID</h1>
+
+<div class="video-shell">
+  <video id="mainVideo" src="Promo.mp4" autoplay loop playsinline preload="auto" controls></video>
+</div>
+
+<a class="hero-btn" href="#" id="getBtn">GET FF ID</a>
+
+<section class="card">
+  <div class="badge">PRO LEVEL ACCESS</div>
+  <div class="logo-title">
+  <img src="Logo.png" alt="FF ID logo">
+  <div class="title title-text"><span style="color:#3bff79">GET FF ID</span> • GET FF PRO LEVEL ID</div>
+</div>
+  <div class="sub">Fast access • clear steps • mobile-friendly layout</div>
+  <div class="chips">
+    <span class="chip">🎁 ALL BUNDLES</span>
+    <span class="chip">🔫 ALL GUN SKINS</span>
+    <span class="chip">⚡ ALL FEATURES WORKING</span>
+    <span class="chip">✨ ALL-IN-ONE ACCESS</span>
+  </div>
+</section>
+
+<div class="section-title">Live Chat Preview <span class="demo-label">SIMULATED</span></div>
+<div style="margin:-2px 0 12px;padding:10px 12px;border-radius:14px;background:rgba(255,212,59,.10);border:1px solid rgba(255,212,59,.28);color:#ffe995;font-size:12px;font-weight:800;text-align:center">
+  Simulated live-chat preview — 500 sample Indian names rotate with simple thank-you/status messages.
+</div>
+<div class="feed"><div class="feed-track" id="feedTrack"></div></div>
+
+<div class="note">
+  This is a simulated chat preview for design purposes. For a real live chat, connect genuine user activity from your own backend/database.
+</div>
+</main>
+
+<script>
+
+const video = document.getElementById("mainVideo");
+if(video){
+  video.muted = false;
+  video.defaultMuted = false;
+  video.volume = 1;
+
+  async function startVideo(){
+    try{
+      video.muted = false;
+      video.volume = 1;
+      await video.play();
+    }catch(e){}
+  }
+
+  window.addEventListener("load", startVideo);
+  ["pointerdown","touchstart","click","keydown"].forEach(evt=>{
+    document.addEventListener(evt, async ()=>{
+      try{
+        video.muted = false;
+        video.volume = 1;
+        await video.play();
+      }catch(e){}
+    }, {once:true, passive:true});
+  });
+}
+
+const demoNames = ['Anurag Sharma','Anurag Verma','Anurag Singh','Anurag Yadav','Anurag Gupta','Anurag Mishra','Anurag Tiwari','Anurag Kumar','Anurag Patel','Anurag Chauhan','Abhishek Sharma','Abhishek Verma','Abhishek Singh','Abhishek Yadav','Abhishek Gupta','Abhishek Mishra','Abhishek Tiwari','Abhishek Kumar','Abhishek Patel','Abhishek Chauhan','Aarav Sharma','Aarav Verma','Aarav Singh','Aarav Yadav','Aarav Gupta','Aarav Mishra','Aarav Tiwari','Aarav Kumar','Aarav Patel','Aarav Chauhan','Vivaan Sharma','Vivaan Verma','Vivaan Singh','Vivaan Yadav','Vivaan Gupta','Vivaan Mishra','Vivaan Tiwari','Vivaan Kumar','Vivaan Patel','Vivaan Chauhan','Aditya Sharma','Aditya Verma','Aditya Singh','Aditya Yadav','Aditya Gupta','Aditya Mishra','Aditya Tiwari','Aditya Kumar','Aditya Patel','Aditya Chauhan','Arjun Sharma','Arjun Verma','Arjun Singh','Arjun Yadav','Arjun Gupta','Arjun Mishra','Arjun Tiwari','Arjun Kumar','Arjun Patel','Arjun Chauhan','Krishna Sharma','Krishna Verma','Krishna Singh','Krishna Yadav','Krishna Gupta','Krishna Mishra','Krishna Tiwari','Krishna Kumar','Krishna Patel','Krishna Chauhan','Ishaan Sharma','Ishaan Verma','Ishaan Singh','Ishaan Yadav','Ishaan Gupta','Ishaan Mishra','Ishaan Tiwari','Ishaan Kumar','Ishaan Patel','Ishaan Chauhan','Kabir Sharma','Kabir Verma','Kabir Singh','Kabir Yadav','Kabir Gupta','Kabir Mishra','Kabir Tiwari','Kabir Kumar','Kabir Patel','Kabir Chauhan','Rohan Sharma','Rohan Verma','Rohan Singh','Rohan Yadav','Rohan Gupta','Rohan Mishra','Rohan Tiwari','Rohan Kumar','Rohan Patel','Rohan Chauhan','Rahul Sharma','Rahul Verma','Rahul Singh','Rahul Yadav','Rahul Gupta','Rahul Mishra','Rahul Tiwari','Rahul Kumar','Rahul Patel','Rahul Chauhan','Aman Sharma','Aman Verma','Aman Singh','Aman Yadav','Aman Gupta','Aman Mishra','Aman Tiwari','Aman Kumar','Aman Patel','Aman Chauhan','Vikas Sharma','Vikas Verma','Vikas Singh','Vikas Yadav','Vikas Gupta','Vikas Mishra','Vikas Tiwari','Vikas Kumar','Vikas Patel','Vikas Chauhan','Mohit Sharma','Mohit Verma','Mohit Singh','Mohit Yadav','Mohit Gupta','Mohit Mishra','Mohit Tiwari','Mohit Kumar','Mohit Patel','Mohit Chauhan','Harsh Sharma','Harsh Verma','Harsh Singh','Harsh Yadav','Harsh Gupta','Harsh Mishra','Harsh Tiwari','Harsh Kumar','Harsh Patel','Harsh Chauhan','Ankit Sharma','Ankit Verma','Ankit Singh','Ankit Yadav','Ankit Gupta','Ankit Mishra','Ankit Tiwari','Ankit Kumar','Ankit Patel','Ankit Chauhan','Saurabh Sharma','Saurabh Verma','Saurabh Singh','Saurabh Yadav','Saurabh Gupta','Saurabh Mishra','Saurabh Tiwari','Saurabh Kumar','Saurabh Patel','Saurabh Chauhan','Deepak Sharma','Deepak Verma','Deepak Singh','Deepak Yadav','Deepak Gupta','Deepak Mishra','Deepak Tiwari','Deepak Kumar','Deepak Patel','Deepak Chauhan','Manish Sharma','Manish Verma','Manish Singh','Manish Yadav','Manish Gupta','Manish Mishra','Manish Tiwari','Manish Kumar','Manish Patel','Manish Chauhan','Sachin Sharma','Sachin Verma','Sachin Singh','Sachin Yadav','Sachin Gupta','Sachin Mishra','Sachin Tiwari','Sachin Kumar','Sachin Patel','Sachin Chauhan','Nitin Sharma','Nitin Verma','Nitin Singh','Nitin Yadav','Nitin Gupta','Nitin Mishra','Nitin Tiwari','Nitin Kumar','Nitin Patel','Nitin Chauhan','Pankaj Sharma','Pankaj Verma','Pankaj Singh','Pankaj Yadav','Pankaj Gupta','Pankaj Mishra','Pankaj Tiwari','Pankaj Kumar','Pankaj Patel','Pankaj Chauhan','Ravi Sharma','Ravi Verma','Ravi Singh','Ravi Yadav','Ravi Gupta','Ravi Mishra','Ravi Tiwari','Ravi Kumar','Ravi Patel','Ravi Chauhan','Akash Sharma','Akash Verma','Akash Singh','Akash Yadav','Akash Gupta','Akash Mishra','Akash Tiwari','Akash Kumar','Akash Patel','Akash Chauhan','Kunal Sharma','Kunal Verma','Kunal Singh','Kunal Yadav','Kunal Gupta','Kunal Mishra','Kunal Tiwari','Kunal Kumar','Kunal Patel','Kunal Chauhan','Gaurav Sharma','Gaurav Verma','Gaurav Singh','Gaurav Yadav','Gaurav Gupta','Gaurav Mishra','Gaurav Tiwari','Gaurav Kumar','Gaurav Patel','Gaurav Chauhan','Yash Sharma','Yash Verma','Yash Singh','Yash Yadav','Yash Gupta','Yash Mishra','Yash Tiwari','Yash Kumar','Yash Patel','Yash Chauhan','Aryan Sharma','Aryan Verma','Aryan Singh','Aryan Yadav','Aryan Gupta','Aryan Mishra','Aryan Tiwari','Aryan Kumar','Aryan Patel','Aryan Chauhan','Dev Sharma','Dev Verma','Dev Singh','Dev Yadav','Dev Gupta','Dev Mishra','Dev Tiwari','Dev Kumar','Dev Patel','Dev Chauhan','Raj Sharma','Raj Verma','Raj Singh','Raj Yadav','Raj Gupta','Raj Mishra','Raj Tiwari','Raj Kumar','Raj Patel','Raj Chauhan','Sameer Sharma','Sameer Verma','Sameer Singh','Sameer Yadav','Sameer Gupta','Sameer Mishra','Sameer Tiwari','Sameer Kumar','Sameer Patel','Sameer Chauhan','Ritesh Sharma','Ritesh Verma','Ritesh Singh','Ritesh Yadav','Ritesh Gupta','Ritesh Mishra','Ritesh Tiwari','Ritesh Kumar','Ritesh Patel','Ritesh Chauhan','Shivam Sharma','Shivam Verma','Shivam Singh','Shivam Yadav','Shivam Gupta','Shivam Mishra','Shivam Tiwari','Shivam Kumar','Shivam Patel','Shivam Chauhan','Vivek Sharma','Vivek Verma','Vivek Singh','Vivek Yadav','Vivek Gupta','Vivek Mishra','Vivek Tiwari','Vivek Kumar','Vivek Patel','Vivek Chauhan','Tarun Sharma','Tarun Verma','Tarun Singh','Tarun Yadav','Tarun Gupta','Tarun Mishra','Tarun Tiwari','Tarun Kumar','Tarun Patel','Tarun Chauhan','Naveen Sharma','Naveen Verma','Naveen Singh','Naveen Yadav','Naveen Gupta','Naveen Mishra','Naveen Tiwari','Naveen Kumar','Naveen Patel','Naveen Chauhan','Pranav Sharma','Pranav Verma','Pranav Singh','Pranav Yadav','Pranav Gupta','Pranav Mishra','Pranav Tiwari','Pranav Kumar','Pranav Patel','Pranav Chauhan','Tushar Sharma','Tushar Verma','Tushar Singh','Tushar Yadav','Tushar Gupta','Tushar Mishra','Tushar Tiwari','Tushar Kumar','Tushar Patel','Tushar Chauhan','Varun Sharma','Varun Verma','Varun Singh','Varun Yadav','Varun Gupta','Varun Mishra','Varun Tiwari','Varun Kumar','Varun Patel','Varun Chauhan','Amit Sharma','Amit Verma','Amit Singh','Amit Yadav','Amit Gupta','Amit Mishra','Amit Tiwari','Amit Kumar','Amit Patel','Amit Chauhan','Sumit Sharma','Sumit Verma','Sumit Singh','Sumit Yadav','Sumit Gupta','Sumit Mishra','Sumit Tiwari','Sumit Kumar','Sumit Patel','Sumit Chauhan','Neeraj Sharma','Neeraj Verma','Neeraj Singh','Neeraj Yadav','Neeraj Gupta','Neeraj Mishra','Neeraj Tiwari','Neeraj Kumar','Neeraj Patel','Neeraj Chauhan','Ajay Sharma','Ajay Verma','Ajay Singh','Ajay Yadav','Ajay Gupta','Ajay Mishra','Ajay Tiwari','Ajay Kumar','Ajay Patel','Ajay Chauhan','Vijay Sharma','Vijay Verma','Vijay Singh','Vijay Yadav','Vijay Gupta','Vijay Mishra','Vijay Tiwari','Vijay Kumar','Vijay Patel','Vijay Chauhan','Sanjay Sharma','Sanjay Verma','Sanjay Singh','Sanjay Yadav','Sanjay Gupta','Sanjay Mishra','Sanjay Tiwari','Sanjay Kumar','Sanjay Patel','Sanjay Chauhan','Rakesh Sharma','Rakesh Verma','Rakesh Singh','Rakesh Yadav','Rakesh Gupta','Rakesh Mishra','Rakesh Tiwari','Rakesh Kumar','Rakesh Patel','Rakesh Chauhan','Mukesh Sharma','Mukesh Verma','Mukesh Singh','Mukesh Yadav','Mukesh Gupta','Mukesh Mishra','Mukesh Tiwari','Mukesh Kumar','Mukesh Patel','Mukesh Chauhan','Dinesh Sharma','Dinesh Verma','Dinesh Singh','Dinesh Yadav','Dinesh Gupta','Dinesh Mishra','Dinesh Tiwari','Dinesh Kumar','Dinesh Patel','Dinesh Chauhan','Lokesh Sharma','Lokesh Verma','Lokesh Singh','Lokesh Yadav','Lokesh Gupta','Lokesh Mishra','Lokesh Tiwari','Lokesh Kumar','Lokesh Patel','Lokesh Chauhan','Mahesh Sharma','Mahesh Verma','Mahesh Singh','Mahesh Yadav','Mahesh Gupta','Mahesh Mishra','Mahesh Tiwari','Mahesh Kumar','Mahesh Patel','Mahesh Chauhan'];
+const actions = [
+  {text:"🙏 Thank you", cls:"green"},
+  {text:"💚 Thank you so much", cls:"green"},
+  {text:"😊 आप बहुत अच्छे हो", cls:"purple"},
+  {text:"✅ मुझे ID मिल गई", cls:"blue"},
+  {text:"✨ Successfully cached", cls:"orange"},
+  {text:"✅ Cache completed successfully", cls:"green"},
+  {text:"🇮🇳 Love from India", cls:"purple"},
+  {text:"🙏 बहुत-बहुत धन्यवाद", cls:"green"},
+  {text:"😊 Thank you भाई", cls:"blue"},
+  {text:"✨ ID access ready", cls:"orange"},
+  {text:"💚 बहुत अच्छा लगा, thank you", cls:"green"},
+  {text:"🎉 Successfully completed", cls:"purple"},
+  {text:"🙏 Thanks a lot", cls:"blue"},
+  {text:"🇮🇳 Lots of love from India", cls:"green"},
+  {text:"✅ मुझे भी मिल गई, thank you", cls:"purple"}
+];
+
+function updateClock(){
+  try{
+    const now = new Date();
+
+    const timeText = new Intl.DateTimeFormat("en-IN", {
+      timeZone: "Asia/Kolkata",
+      hour: "2-digit",
+      minute: "2-digit",
+      second: "2-digit",
+      hour12: true
+    }).format(now);
+
+    const dateText = new Intl.DateTimeFormat("en-IN", {
+      timeZone: "Asia/Kolkata",
+      weekday: "short",
+      day: "2-digit",
+      month: "short",
+      year: "numeric"
+    }).format(now);
+
+    document.getElementById("clock").textContent = "🇮🇳 " + timeText + " IST";
+    document.getElementById("date").textContent = dateText;
+  }catch(err){
+    const now = new Date();
+    document.getElementById("clock").textContent = now.toLocaleTimeString("en-IN") + " IST";
+    document.getElementById("date").textContent = now.toLocaleDateString("en-IN");
+  }
+}
+updateClock();
+setInterval(updateClock,1000);
+
+const feedTrack = document.getElementById("feedTrack");
+
+function makeItem(i){
+  const name = demoNames[i % demoNames.length];
+  const a = actions[i % actions.length];
+  const sec = 4 + (i % 17);
+  return `<div class="item ${a.cls}">
+    <b>${name}</b>
+    <div class="meta">
+      <span class="pill">${sec} sec ago</span>
+      <span class="status">${a.text}</span>
+    </div>
+  </div>`;
+}
+
+let feedIndex = 0;
+
+function renderFive(){
+  let block = "";
+  for(let n=0;n<5;n++){
+    block += makeItem((feedIndex + n) % demoNames.length);
+  }
+  feedTrack.style.opacity = "0";
+  feedTrack.style.transform = "translateY(18px)";
+  setTimeout(()=>{
+    feedTrack.innerHTML = block;
+    feedTrack.style.opacity = "1";
+    feedTrack.style.transform = "translateY(0)";
+  },250);
+
+  feedIndex = (feedIndex + 5) % demoNames.length;
+}
+
+feedTrack.style.transition = "opacity .35s ease, transform .55s ease";
+renderFive();
+setInterval(renderFive, 2000);
+
+document.getElementById("getBtn").addEventListener("click",(e)=>{
+  e.preventDefault();
+  alert("Add your legitimate GET FF ID destination URL here.");
+});
+</script>
+</body>
+</html>
