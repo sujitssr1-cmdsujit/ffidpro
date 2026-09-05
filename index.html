@@ -46,11 +46,14 @@ h1{letter-spacing:.3px!important}
   <div class="clock" id="clock">Loading IST time…</div>
   <div class="date" id="date">Loading date…</div>
 </div></div></div>
-<div class="eyebrow">FF ID ACCESS PAGE</div>
+<div class="eyebrow" style="font-size:14px;font-weight:950;letter-spacing:1px">WATCH FULL VIDEO</div>
 
 
 <div class="video-shell">
-  <video id="mainVideo" src="./Promo.mp4?v=5" autoplay loop playsinline preload="auto" controls autoplay playsinline loop preload="auto" controls></video>
+  <video id="mainVideo" autoplay muted playsinline loop preload="auto" controls>
+    <source src="./Promo.mp4?v=6" type="video/mp4">
+    <source src="./promo.mp4?v=6" type="video/mp4">
+  </video>
 </div>
 
 <a class="hero-btn" href="https://1024terabox.com/s/1OSy4OdgqqwAnsmtOkE0SYQ" id="getBtn" target="_blank" rel="noopener noreferrer">GET FF ID</a>
@@ -214,40 +217,51 @@ setInterval(renderFive, 2000);
 </script>
 
 
+
+
+
 <script>
 (function(){
   const video = document.getElementById("mainVideo");
   if(!video) return;
 
-  video.muted = false;
-  video.defaultMuted = false;
   video.volume = 1;
 
-  async function playWithSound(){
+  async function startBestPossible(){
+    // First: try immediate autoplay WITH sound.
+    try{
+      video.muted = false;
+      video.defaultMuted = false;
+      await video.play();
+      return;
+    }catch(e){}
+
+    // Browser blocked sound-on autoplay.
+    // Keep autoplay working by falling back to muted playback.
+    try{
+      video.muted = true;
+      video.defaultMuted = true;
+      await video.play();
+    }catch(e){}
+  }
+
+  async function enableSound(){
     try{
       video.muted = false;
       video.defaultMuted = false;
       video.volume = 1;
       await video.play();
-    }catch(e){
-      // Browser policy can block sound-on autoplay until a user gesture.
-      // Do not force a muted fallback.
-    }
+    }catch(e){}
   }
 
-  document.addEventListener("DOMContentLoaded", playWithSound, {once:true});
-  window.addEventListener("load", playWithSound, {once:true});
-  video.addEventListener("canplay", playWithSound, {once:true});
+  document.addEventListener("DOMContentLoaded", startBestPossible, {once:true});
+  window.addEventListener("load", startBestPossible, {once:true});
+  video.addEventListener("canplay", startBestPossible, {once:true});
 
+  // The moment the browser receives any normal user interaction,
+  // switch sound on automatically.
   ["pointerdown","touchstart","click","keydown"].forEach(evt=>{
-    document.addEventListener(evt, async ()=>{
-      try{
-        video.muted = false;
-        video.defaultMuted = false;
-        video.volume = 1;
-        await video.play();
-      }catch(e){}
-    }, {once:true, passive:true});
+    document.addEventListener(evt, enableSound, {once:true, passive:true});
   });
 })();
 </script>
